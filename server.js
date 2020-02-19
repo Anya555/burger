@@ -26,8 +26,8 @@ var db = require("./models");
 
 // Routes
 // =============================================================
-// require("./routes/api_routes")(app);
-// require("./routes/html_routes")(app);
+require("./routes/api_routes")(app);
+require("./routes/html_routes")(app);
 
 
 // Starts the server to begin listening
