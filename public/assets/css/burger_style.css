@@ -9,7 +9,6 @@ body{
     font-size: large;
 }
 
-
 h5{
     font-size: xx-large;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -20,4 +19,18 @@ h5{
 p{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: large;
+}
+
+h6{
+    color:red;
+    text-align: center;
+}
+
+li{
+    text-align: center;
+    list-style-type: none;
+}
+
+.card{
+    border-color: gray;
 }
