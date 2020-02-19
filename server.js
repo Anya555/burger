@@ -2,39 +2,43 @@
 // *** Dependencies
 // =============================================================
 const express = require("express");
-const exphb = require("express-handlebars");
+const exphbs = require("express-handlebars");
 const mysql = require("mysql");
 const fs = require('fs');
+const path = require("path");
+// Requiring models for syncing
+const db = require("./models");
 
-// Sets up the Express App
-// =============================================================
-var app = express();
-var PORT = process.env.PORT || 8080;
 
-app.use(express.urlencoded({ extended: true }));
+//APP-CONFIG
+let app = express();
+let PORT = process.env.PORT || 8000; 
+
+// Sets up the Express app to handle data parsing 
+app.use(express.urlencoded({ extended: true })); 
 app.use(express.json());
 
+//Establishing view path location in MVC
+let viewsPath = path.join(__dirname, "/views")
+app.set('views', viewsPath);
 
-app.engine("handlebars", exphb({ defaultLayout: "main" }));
+// Allows app to implement handlebars to template data
+app.engine("handlebars", exphbs({ defaultLayout: "main", layoutsDir: viewsPath + '/layouts' })); 
 app.set("view engine", "handlebars");
 
-// Static directory
-app.use(express.static("public"));
 
-// Requiring our models for syncing
-var db = require("./models");
+//Incorporate static directory
+app.use(express.static(__dirname + "/public"));
 
-// Routes
-// =============================================================
+
+//Links out to route handler
 require("./routes/api_routes")(app);
-require("./routes/html_routes")(app);
+// require("./routes/html_routes")(app);
 
-
-// Starts the server to begin listening
-// =============================================================
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
-      console.log("App listening on PORT " + PORT);
+//wrap app listeners w/ db sync to ensure db is ready
+db.sequelize.sync({force:true}).then(()=>{
+    app.listen(PORT, ()=>{
+        console.log("Server listening on: http://localhost:" + PORT);
     });
-  });
+});
   
