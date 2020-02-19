@@ -42,7 +42,15 @@
                                     <h6>Undevoured burgers</h6>
                                     <hr>
                                     <ul>
+                                        {{#each burgers}}
 
+                                        <li> {{this.burger_name}} </li>
+
+                                        <form action="/" method="POST">
+                                            <button class="submit" type="submit" data-id={{this.id}}>Devour</button>
+                                        </form>
+
+                                        {{/each}}
                                     </ul>
                                 </div>
                                 <!------------------------------------------------------->
@@ -52,9 +60,15 @@
                                 <div class="col md-2 sm-12">
                                     <h6>Devoured burgers</h6>
                                     <hr>
-                                    <ul>
 
+                                    <ul>
+                                        {{#each burgers}}
+
+                                        <li> {{this.devoured}} </li>
+
+                                        {{/each}}
                                     </ul>
+
                                 </div>
                             </div>
                             <!------------------------------------------------------->
