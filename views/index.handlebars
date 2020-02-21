@@ -23,10 +23,11 @@
                                     <div class="form-group mb-2">
                                         <p>Type a name of a burger</p>
                                     </div>
+                                    
                                     <div class="form-group mx-sm-3 mb-2">
                                         <input class="form-control burger-name" placeholder="">
                                     </div>
-
+                                  
                                     <button type="submit" class="btn submit submit-btn btn-primary mb-2">Submit</button>
                                 </form>
 
@@ -39,16 +40,13 @@
                             <!--Placeholder for burgers that haven't been devoured-->
                             <div class="row">
                                 <div class="col md-2 sm-12">
-                                    <h6>Undevoured burgers</h6>
+                                    <h6>Not devoured burgers</h6>
                                     <hr>
-                                    <ul>
-                                        {{#each burgers}}
+                                    <ul >
+                                        {{#each burgers.uneaten}}
 
-                                        <li> {{this.burger_name}} </li>
-
-                                        <form action="/" method="POST">
-                                            <button class="submit devour" type="submit" data-id={{this.id}}>Devour</button>
-                                        </form>
+                                        <li class="not-devoured">  {{this.burger_name}} </li>
+                                        <button class="devour" type="submit" data-id={{this.id}}>Devour</button>
 
                                         {{/each}}
                                     </ul>
@@ -62,9 +60,9 @@
                                     <hr>
 
                                     <ul>
-                                        {{#each burgers}}
+                                        {{#each burgers.devoured}}
 
-                                        <li> {{this.devoured}} </li>
+                                        <li> {{this.burger_name}} </li>
 
                                         {{/each}}
                                     </ul>
