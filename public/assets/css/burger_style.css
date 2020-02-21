@@ -27,10 +27,14 @@ h6{
 }
 
 li{
-    text-align: center;
     list-style-type: none;
+    padding:5px;
 }
 
 .card{
     border-color: gray;
+}
+
+.devour{
+    float:right;
 }
