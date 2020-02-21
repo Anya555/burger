@@ -4,9 +4,11 @@ $(document).ready(function () {
     const burgername = $(".burger-name");
     let newburger;
    
-
+    
     $(".submit-btn").on("click", function (e) {
         e.preventDefault();
+
+        // grabbing burger name written into input field in the DOM
         newburger = {
             burger_name: burgername.val()
         }
@@ -16,43 +18,35 @@ $(document).ready(function () {
     });
 
 
-
-
     function addBurgerToDb(Burger) {
         $.post("/api/burgers/", Burger).then(function () {
             location.reload();
-            /*
-             console.log(newburger);
-
-            var addToList = [];
-
-            for (let i = 0; i < newburger.length; i++) {
-                    addToList.push(newburger[i]);
-            }
-            notDevoured.append(addToList);
-            console.log(addToList);
-            */
-
-            // location.reload();
         })
     }
-
-
 
 
     $(".devour").on("click", function (e) {
         e.preventDefault();
         // e.stopImmediatePropagation();
 
-        // Get the burger id 
-        const id = $(this).attr("data-id");
+        // Getting the burger id 
+        let id = $(this).attr("data-id");
         console.log(id);
 
-        // Make api call
-        const url = "/api/burger/" + id;
-        $.put(url).then(function () {
+
+        $.ajax("/api/burger/" + id, {
+            type: "PUT",
+        }).then(() => {
             location.reload();
         });
+
+// throws error put is not a function
+     // Making api call
+        // const url = "/api/burger/" + id;
+        // $.put(url).then(function () {
+        //     location.reload();
+        // });
+   
     });
 
 });

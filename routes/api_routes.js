@@ -9,27 +9,36 @@ module.exports = function (app) {
     console.log(req.body);
     db.Burgers.create({
       burger_name: req.body.burger_name,
-      devoured: false
+      devoured: 0
     }).then(function (dbBurgers) {
       res.json(dbBurgers);
     });
   });
 
-  app.put("/api/burger/:id", function(req, res){
-
+  // moving burger to devoured list, if 'devour' button is cliked in a DOM
+  app.put("/api/burger/:id", function (req, res) {
+    db.Burgers.update({ devoured: 1 },
+     
+      {
+        where: {
+          id: req.params.id
+        }
+      }).then(function(dbBurgers) {
+        res.json(dbBurgers);
+      });
+    
   });
+
+
 
   // rendering home page
   app.get('/', function (req, res) {
-    // Use sequelize model to find all burgers
-    // Create two arrays, one for devoured burgers, one for uneaten ones
-    // Send both arrays to handlebars and let it populate the page
-    // console.log("home page");
 
-    
+    // Creating two arrays, one for devoured burgers, one for uneaten ones
     const devoured = [];
     const uneaten = [];
 
+    // Using sequelize model to find all burgers
     db.Burgers.findAll({}).then((resp) => {
       console.log(resp);
       for (let i = 0; i < resp.length; i++) {
@@ -49,12 +58,10 @@ module.exports = function (app) {
         }
       }
 
-      res.render('index', { burgers: { devoured: devoured, uneaten: uneaten }})
+      // Sending both arrays to handlebars and lettting it populate the page
+      res.render('index', { burgers: { devoured: devoured, uneaten: uneaten } })
     });
   });
-
-
-
 
 
 }

@@ -42,14 +42,16 @@
                                 <div class="col md-2 sm-12">
                                     <h6>Not devoured burgers</h6>
                                     <hr>
+                                   
                                     <ul >
                                         {{#each burgers.uneaten}}
 
-                                        <li class="not-devoured">  {{this.burger_name}} </li>
-                                        <button class="devour" type="submit" data-id={{this.id}}>Devour</button>
+                                        <li class="not-devoured">  {{this.burger_name}} <button class="devour" type="submit" data-id={{this.id}}>Devour</button> </li>
+                                       
 
                                         {{/each}}
                                     </ul>
+                                   
                                 </div>
                                 <!------------------------------------------------------->
 
