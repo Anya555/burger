@@ -27,8 +27,7 @@ $(document).ready(function () {
 
     $(".devour").on("click", function (e) {
         e.preventDefault();
-        // e.stopImmediatePropagation();
-
+       
         // Getting the burger id 
         let id = $(this).attr("data-id");
         console.log(id);
@@ -39,13 +38,6 @@ $(document).ready(function () {
         }).then(() => {
             location.reload();
         });
-
-// throws error put is not a function
-     // Making api call
-        // const url = "/api/burger/" + id;
-        // $.put(url).then(function () {
-        //     location.reload();
-        // });
    
     });
 

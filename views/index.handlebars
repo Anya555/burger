@@ -23,11 +23,11 @@
                                     <div class="form-group mb-2">
                                         <p>Type a name of a burger</p>
                                     </div>
-                                    
+
                                     <div class="form-group mx-sm-3 mb-2">
                                         <input class="form-control burger-name" placeholder="">
                                     </div>
-                                  
+
                                     <button type="submit" class="btn submit submit-btn btn-primary mb-2">Submit</button>
                                 </form>
 
@@ -42,16 +42,17 @@
                                 <div class="col md-2 sm-12">
                                     <h6>Not devoured</h6>
                                     <hr>
-                                   
-                                    <ul >
+
+                                    <ul>
                                         {{#each burgers.uneaten}}
 
-                                        <li class="not-devoured">  {{this.burger_name}} <button class="devour" type="submit" data-id={{this.id}}>Devour</button> </li>
-                                       
+                                        <li class="not-devoured"> {{this.burger_name}} <button class="devour"
+                                                type="submit" data-id={{this.id}}>Devour</button> </li>
+
 
                                         {{/each}}
                                     </ul>
-                                   
+
                                 </div>
                                 <!------------------------------------------------------->
 
