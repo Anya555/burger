@@ -28,4 +28,4 @@ First users are prompted to put in a burger name into input field and click on a
 8. I used handlebars to dynamically populate "Not devoured" and "Devoured" lists. I run into an security issue with handlebars, when I was trying to traverse the data from database response, and I wasn't able to grab a burger's name, so in "Not devoured" list only a new button was getting generated when a "submit" button was cliked, but a name of a burger wouldn't get displayed. To solve that issue, I had to build a new object and populate it with the data handlebaars needs (Lines 48-52 of api_routes.js file).
 9. When an app was fully functional locally, I deployed it to Heroku, even though I run into issue with adding a database at first. Here's a link of Heroku deployed application: https://infinite-ridge-31103.herokuapp.com/
 
-![burger](./assets/img/burger.gif)
+![burger](.public/assets/img/burger.gif)
